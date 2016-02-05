@@ -2,19 +2,33 @@
 
 <h1>Hiking Calories Calculator</h1>
 
-<h2> Pick a trail: </h2>
+<label for="trail-selector">Pick Trail:</label>
 <select id="trail-selector">
   <option value="10207801">Cataract Falls Trail</option>
   <option value="10033941">Estes Cone</option>
-  <option value="10034022" selected>Granite Mountain Trail</option>
+  <option value="10034022" >Granite Mountain Trail</option>
   <option value="10035772">Runyon Canyon Trail</option>
   <option value="10029035">Tennessee Valley Trail</option>
 </select>
 
 
-<h3> You will burn: </h3>
+<%= form_tag('/calories/calculate')do %>
+	<%= label_tag(:dist, "Distance (mi):") %>
+	<%= text_field_tag(:dist, nil, readonly: true) %>
+	<%= label_tag(:elevg, "Elevation Gain (mi) :") %> 
+	<%= text_field_tag(:elevg, nil,  readonly: true) %>
+	<%= label_tag(:weight, "Weight (lb):") %> 
+	<%= range_field_tag(:weight, 190, min: 90 , max: 210  , step: 5) %>
+	<input type="text" id="weight-text" value="" disabled>
+	<%= label_tag(:pace, "Hiking Pace (mph):") %> 
+	<%= range_field_tag(:pace, 2, min: 0.5 , max: 8  , step: 0.5) %>
+	 <input type="text" id="pace-text" value="" disabled>
 
-<h3> You will finish your trail in: </h3>
+	<%= submit_tag 'Submit' %>
+<% end %>
+
+
 
 </div>
+
 <% @js_manifest = "calculator" %>

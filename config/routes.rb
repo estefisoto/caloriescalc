@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'calculator#index'
-
   get 'calories', to:  'calculator#index'
+  post 'calories/calculate', to: 'calculator#calc'
+  get '*path' => redirect('/')
 
 
   # Example of regular route:
